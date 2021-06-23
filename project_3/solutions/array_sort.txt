@@ -1,0 +1,44 @@
+# sort, sorteert DATA geheugen van klein naar groot.
+# registers used:
+# r13: bevat waarde 1 om makkelijk te index te kunnen verhogen in het DATA geheugen.
+# r3: index van het huidige getal.
+# r2: waarde van kleinste getal.
+# r4: index van kleinste getal.
+# r5: waarde van huidig getal.
+
+LOADMEM
+zero r1		# 0 laadt waarde ZERO in r1, eerste index in DATA geheugen.
+ori r13 1   # 1 laadt waarde 1 in r13 om index te kunnen verhogen.
+jal 4		# 2 Jump And Link
+j 25		# 3 Jump naar het einde van het programma
+
+cp r3 r1    # 4 r3 bevat index van het huidige getal in het DATA geheugen.
+lw r2 r3 0  # 5 laad de waarde op positie r3 uit het DATA geheugen in r2.
+cp r4 r1    # 6 r4 bevat index van het kleinste getal.
+
+add r3 r3 r13 # 7 Verhoog index met 1.
+lw r5 r3 0    # 8 laad waarde op positie r3 uit DATA geheugen in r5.
+eq r10 r5 r0  # 9 check of r5 gelijk is aan 0.
+brnz r10 5    # 10 als r5 gelijk is aan 0 branch naar 14.
+gt r10 r5 r2  # 11 check of r5 groter is dan r2.
+brnz r10 2    # 12 branch naar 13 als r5 groter is dan r3.
+cp r2 r5	  # 13 kopier waarde van r5 en store deze in r3.
+cp r4 r3	  # 14 kopieer index van r3 en sla deze op in r4.
+j 7			  # 15 Jump naar 5
+
+lw r9 r1 0    # 16 laad waarde op index r1 in r9.
+sw r2 r1 0    # 17 kleinste getal komt op index r1.
+sw r9 r4 0    # 18 getal dat op index r1 staat komt in r9 te staan.
+
+add r1 r1 r13 # 19 index r1 wordt met 1 verhoogd.
+lw r2 r1 0    # 20 
+eq r10 r2 r0  # 21 Als r2 gelijk is aan 0 wordt het programma geïndigdt.
+brnz r10 1    # 22
+j 4			  # 23 Loop programma opnieuw.
+jr r15 0	  # 24
+END
+
+
+
+
+

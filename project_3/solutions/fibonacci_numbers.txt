@@ -1,0 +1,37 @@
+# fibonacci, registers used:
+# r1: houdt de index bij van n-2
+# r2: houdt de waarde van n-2 bij
+# r3: houdt de waarde van n-1 bij
+# r4: houdt de index van n-1 bij
+# r13: gebruikt om het volgend fibonacci getal in op te slaan.
+
+LOADMEM
+zero r1        # 0 laad ZERO in r1.
+
+ori r5 1	   # 1 laad het getal 1 in r5, we gaan dit gebruiken om telkens per 1 te verhogen.
+
+ori r2 1	   # 2 1 komt in r2 te staan.
+lw r1 r0 0	   # 3 r1 wordt gebruikt om de index van r2 in het DATA geheugen bij te houden.
+sw r2 r1 0     # 4 r2 = n-2
+
+ori r3 1       # 5 1 komt in r3 te staan.
+sw r3 r0 1     # 6 r3 = n-1
+lw r4 r0 1 	   # 7 r4 wordt gebruikt om de index van r3 in het DATA geheugen bij te houden.
+
+
+add r13 r2 r3  # 8 Bereken het nieuwe fibonacci getal --> r13 = ((n-1) + (n-2))
+add r4 r4 r5   # 9 Verhoog index van (n-1) met 1.
+add r1 r1 r5   # 10 Verhoog index met van (n-2) met 2.
+sw r13 r4 0    # 11 Nieuw getal/waarde in uit r13 wordt op vrije plek (n-1) in DATA geheugen gezet.
+
+lw r3 r4 0	   # 12 Laad in r3 de nieuwe waarde van (n-1).
+lw r2 r1 0     # 13 Laad in r2 de nieuwe waarde van (n-2).
+
+j 8	           # 14 Jump terug naar instructie 8, dit blijft uitgevoerdt worden totdat er OVERFLOW optreedt.
+
+# infinite loop wanneer dit via Test.py wordt uitgevoerd.
+# Het datapath zal op halt springen wanneer het programma het fibonacci
+# getal 46368 wilt berekenen met i-2 = 17711 en i-1 = 28657. Overflow treedt
+# dus op na het getal 28657.
+
+END
