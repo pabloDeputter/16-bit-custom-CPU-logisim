@@ -1,0 +1,90 @@
+<html>
+
+<head>
+<title>Verslag</title>
+<!-- Het "u" element (underline) is geherdefinieerd voor overline -->
+<style type="text/css">u {text-decoration: overline;}</style>
+
+</head>
+
+<body style="background-color:LightGray;"></body>
+
+<h1>Verslag</h1>
+<p><b>Titel:</b> <i>Project 1</i></p>
+<p>Dit verslag werd opgesteld door:<br />
+<ul>
+<li><b>Naam:</b> <i>Max Etman</i><br />
+<b>Studentennummer:</b> <i>20204398</i><br />
+<b>Email adres:</b> <i>Max.Etman@student.uantwerpen.be</i>
+</li>
+<li><b>Naam:</b> <i>Pablo Deputter<br />
+<b>Studentennummer:</b> <i>20205440</i><br />
+<b>Email adres:</b> <i>Pablo.Deputter@student.uantwerpen.be</i>
+</li>
+</ul>
+<b>Aantal man-uren besteed:</b> <i>9 uur</i><br />
+<b>Moeilijkheidsgraad:</b> <i>5</i> /10</p>
+
+<body>
+<h3>Verschillende links:</h3>
+<li><a href="index.html">Home</a></li>
+<li><a href="project2.html">Project2</a></li>
+<li><a href="project3.html">Project3</a></li>
+</body>
+
+<h2>Inhoud van de oplossing</h2>
+<p>De oplossing bestaat uit de volgende bestanden (geef alle bestanden op):</p>
+<ul>
+<li><a href="solutions/opdracht1.jpg">opdracht1.jpg</a>: oplossing opdracht 1</li>
+<li><a href="solutions/opdracht2.jpg">opdracht2.jpg</a>: oplossing opdracht 2</li>
+<li><a href="solutions/opdracht3_nand_gates.circ">opdracht3_nand_gates.circ</a>: oplossing opdracht 3</li>
+<li><a href="solutions/opdracht4_truth_table.circ">opdracht4_truth_table.circ</a>: oplossing opdracht 4</li>
+<li><a href="solutions/7_segment_display.circ">7_segment_display.circ</a>: oplossing opdracht 5</li>
+</ul>
+
+<h2>Verslag</h2>
+<p>
+    <h3>Opdracht 1</h3>
+    Onderstaande foto laat zien hoe de eerste opdracht is opgelost. Hierbij hebben wij aan de hand van een waarheidstabel 'De Moran's theorem' bewezen. Dit was vlot opgelost door de uitkomsten van de 'boolean algebra' te vergelijken.
+    <br> </br>
+    <img src="solutions/opdracht1.jpg" alt="opdracht 1" style="width:730px;height:200px;">
+</p>
+    <h3>Opdracht 2</h3>
+    Aan de hand van de eerder bewezen 'De Moran's theorem' koden we de basisformule opsplitsen. Nadat we dit hadden gedaan konden we hierop distrbutiviteit toepassen, dankzij de 'Inverse Law' kan de meerderheid van de elementen geschrapt worden omdat deze op 0 uitkomen. Voor dat we dit het eindresultaat noemen kunnen we de verschillende elementen nog wat ordelijker op alfabetische volgorde zetten.
+    <br> </br>
+    <img src="solutions/opdracht2.jpg" alt="opdracht2" style="width:400px;height:200px;">
+<p>
+    <h3>Opdracht 3</h3>
+    In 'inhoud van de oplossing' kan het logisim circuit gevonden wordenden voor opdracht 3. Zie onderstaande foto voor een screenshot van het circuit.
+    <br> </br>
+    <img src="images/opdracht3.png" alt="opdracht3" style="width:400px;height:600px;">
+</p>
+<p>
+    De 'basic' 'AND-gates', 'OR-and' en 'NOT-gates' worden hier enkel voorgesteld met 'NAND-gates'. Alle poorten kunnen dus herbouwd worden met enkel het gebruik van 'NAND-gates'. Na enkele keren experimenteren met onze zelfgemaakte 'NAND-gate' was dit vlot oplgelost.
+</p>
+    <h3>Opdracht 4</h3>
+    Alweer kan de oplosing van deze opdracht in 'inhoud van de oplossing' gevonden worden.
+    Hieronder een screenshot van het circuit.
+    <br> </br>
+    <img src="images/opdracht4.png" alt="opdracht4" style="width:330px;height:210px;">
+</p>
+<p>
+    Deze oplossing was makkelijk te vinden door de handige waarheidstabel die ons werd meegeleverd. Deze moesten we omvormen tot een algebraïsche expressie, deze konden we simplificeren aan de hand van distributiviteit omgekeerd toe te passen en de 'Inverse Law' en 'De Morgan's theorem' te gebruiken. Met deze gesimmplificeerde expressie was het een makkelijkere taak om het circuit te bouwen.
+</p>
+<p>
+    <h3>Opdracht 5</h3>
+    Voor deze opdracht construeerden we eerst een subcircuit waarin we de gegeven waarheidstabel in implementeerden aan de hand van enkel 'NAND-gates'. Het '7-segment display' heeft 7 verschillende inputs, a - g. De binaire representatie van het decimaal nummer kon aan de hand van een 3-bit input en het subcircuit worden weergeven op het 7 segment display. Om het getal 0 te weergeven op het LED display moeten bijvoorbeeld alle outputs vann het subcircuit aanstaannn, behalve de middelste. Zie hier onder een screenshot van het subcircuit en het 7-segment display.
+    <br> </br>
+    <img src="images/opdracht5.png" alt="opdracht5" style="width:270px;height:680px;">
+    <img src="images/7segmentdisplay.png" alt="7 segment display" style="width:627px;height:352;">
+</p>
+<p>
+    <h2>Enkele 'afterthoughts'</h2>
+    Ik vond dat dit project het gemakkelijkste van allen was, ik beschouw het als een soort introductie
+    tot hoe logisim functioneert en de manier waarop wij te werk kunnen gaan met de gates en de inputs 
+    etc. Het heeft ons zeker geholpen de verschillende functies van Logisim en de basis van 'logic design' onder de knie te krijgen.
+</p>
+
+</body>
+
+</html>

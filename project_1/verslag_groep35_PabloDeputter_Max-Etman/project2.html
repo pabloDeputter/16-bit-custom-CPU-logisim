@@ -1,0 +1,78 @@
+
+<html>
+<head>
+<title>Verslag</title>
+<!-- Het "u" element (underline) is geherdefinieerd voor overline -->
+<style type="text/css">u {text-decoration: overline;}</style>
+
+</head>
+<body style="background-color:LightGray;"></body>
+
+<h1>Verslag</h1>
+<p><b>Titel:</b> <i>Project 2</i></p>
+<p>Dit verslag werd opgesteld door:<br />
+<ul>
+<li><b>Naam:</b> <i>Max Etman</i><br />
+<b>Studentennummer:</b> <i>20204398</i><br />
+<b>Email adres:</b> <i>Max.Etman@student.uantwerpen.be</i>
+</li>
+<li><b>Naam:</b> <i>Pablo Deputter<br />
+<b>Studentennummer:</b> <i>20205440</i><br />
+<b>Email adres:</b> <i>Pablo.Deputter@student.uantwerpen.be</i>
+</li>
+</ul>
+<b>Aantal man-uren besteed:</b> <i>20 uur</i><br />
+<b>Moeilijkheidsgraad:</b> <i>7</i> /10</p>
+
+<body>
+<h3>Verschillende links:</h3>
+<li><a href="index.html">Home</a></li>
+<li><a href="project1.html">Project1</a></li>
+<li><a href="project3.html">Project3</a></li>
+</body>
+
+<h2>Inhoud van de oplossing</h2>
+<p>De oplossing bestaat uit de volgende bestanden (geef alle bestanden op):</p>
+<ul>
+<li><a href="solutions/project_2.circ">project_2.circ</a>: De verzameling van oplossingen voor project 2.</li>
+</ul>
+
+<h2>Verslag</h2>
+<p>
+    <h3>Bestandstructuur</h3>
+    Bij deze opdracht hebben we besloten om alle oplossingen voor de opdrachten in een .circ bestand te stoppen, dit als apart subcircuits. Dit was bedoeld omdat we deze circuits nog later zouden nodig hebben voor andere opdrachten in dit project.
+</p>
+<p>
+    <h3>Opdracht 1</h3>
+    Na de truth table op te stellen en de boolean algebra te simplificeren was het vrij eenvoudig om de 1-bit adder op te stellen, we hadden wel even moeite om het 'carryIn' en het 'carryOut' systeem onder de hand te krijgen maar de rest verliep vlot. Hieronder een screenshot van de waarheidstabel en de de 1-bit full adder.
+    <br> </br>
+    <img src="images/opdracht1.png" alt="opdracht1" style="width:370px;height:420px;">
+    <img src="images/truthTableAdder.png" alt="opdracht1" style="width:576px;height:263px;">
+</p>
+<p>
+    <h3>Opdracht 2</h3>
+    Hierbij moesten we een 16-bit 'ripple adder' bouwen. Dit werd gedaan door 16 1-bit 'full adders' van vorige opdracht naast elkaar te plaatsen en de 'carryOut' van de vorige adder te verbinden met de 'carryIn' van de volgende adder. De 'carryIn' van de eerste adder werd verbonden met een constante, 1. Alle inputs en outputs van de adders werden verbonden met een splitter. De splitter keert deze om met de meest significant bit vanboven. De laatste 'carryOut' werd verbonden met een 1-bit output en een LED lampje dat gaat branden wanneer er 'overflow' optreedt. Dit gebeurd wanneer het decimaal getal niet meer kan worden voorgesteld in binair met het maximum aantal gekozen bits, in dit geval is dit dus 16-bits. Hieronder een screenshot van het circuit.
+    <br> </br>
+    <img src="images/opdracht2.png" alt="opdracht2" style="width:500px;height:400px;">
+</p>
+<p>
+    <h3>Opdracht 3 + 4</h3>
+    Ik heb deze twee opdrachten samengesteld omdat ze bij elkaar horen<br>
+
+    De eerste stap was om een 4-bit 'carry lookahead adder' te maken. Dit is een adder met minder vertraging dan een 'full adder', deze moet namelijk niet wachten op de 'carryIn' van de adder. Dit was voor ons beide zeer moeilijk te begrijpen, maar uiteindelijk zijn we er toch opgekomen met behulp van wat hulpmiddelen van het internet. Eerst hebben we deze zelf geconstrueerd en daarna hebben we deze met behulp van 'analyse' tool van Logisim dez wat ordelijker gemaakt. Dit zorgt er voor dat deze wat langer was, dus hieronder is een gedeeltelijke screenshot van de 4-bit CLA gemaakt met behulp van Logisim en diegene die we zelf in elkaar hebben gezet.
+    <br> </br>
+    <img src="images/4bit.png" alt="4-bit CLA" style="width:350px;height:500px;"><br>
+    <img src="images/4bitcla.png" alt="4-bit CLA" style="width:711px;height:262px;"><br>
+</p>
+    Het liep steeds fout bij het bouwen van de 16-bit CLA want we maakten gebruik van de 'carryIn' 4 en 'sum' 4 formule i.p.v. 'super-generate -en propagate'. Uitendelijk is het toch gelukt nadien ik de opname van de les herbekeek. Nadat we hadden uitgevonden dat we de verkeerde formules gebruikten hebben we de 4-bit CLA verbouwd dus kon er nooit een 'carryIn' worden doorgegeven aan de volgende adder. Deze konden we dan 4 keer naast elkaar gebruiken. De 'carryIn' van de eerste adder staat op 0. De 'carryIn' van de volgende adders wordt berekent met behulp van de 'super-generate -en propagate' van alle vorige adders. Dit betekent dus dat deze som exponentieel groeit. We konden bevestigen dat onze 16-bit CLA werkte door de outputs onze 16-bit 'ripple adder' er mee te vergelikken. Hieronder is een screenshot van het circuit van de 16-bit CLA en de formules die we gebruikt hebben.
+    <br> </br>
+    <img src="images/16bitcla.png" alt="16bit" style="width:450px;height:375px;"><br>
+    <img src="images/formules.png" alt="gebruikte formules" style="width:1066px;height:171px;"><br>
+    We hadden geen idee hoe we de latency moesten bepalen van het circuit, dus deze opdracht hebben we helaas niet volledig kunnen voltooien, we weten wel dat de CLA veel sneller is en dat de 'ripple adder' te inefficient is.
+
+
+
+
+</body>
+
+</html>

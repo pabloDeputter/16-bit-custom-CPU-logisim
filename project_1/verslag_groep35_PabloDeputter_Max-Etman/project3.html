@@ -1,0 +1,96 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Verslag</title>
+<!-- Het "u" element (underline) is geherdefinieerd voor overline -->
+<style type="text/css">u {text-decoration: overline;}</style>
+
+</head>
+
+<body style="background-color:LightGray;"></body>
+
+<h1>Verslag</h1>
+<p><b>Titel:</b> <i>Project 3</i></p>
+<p>Dit verslag werd opgesteld door:<br />
+<ul>
+<li><b>Naam:</b> <i>Max Etman</i><br />
+<b>Studentennummer:</b> <i>20204398</i><br />
+<b>Email adres:</b> <i>Max.Etman@student.uantwerpen.be</i>
+</li>
+<li><b>Naam:</b> <i>Pablo Deputter/<br />
+<b>Studentennummer:</b> <i>20205440</i><br />
+<b>Email adres:</b> <i>Pablo.Deputter@student.uantwerpen.be</i>
+</li>
+</ul>
+<b>Aantal man-uren besteed:</b> <i>20 uur</i><br />
+<b>Moeilijkheidsgraad:</b> <i>9</i> /10</p>
+
+<body>
+<h3>Verschillende links:</h3>
+<li><a href="index.html">Home</a></li>
+<li><a href="project1.html">Project1</a></li>
+<li><a href="project2.html">Project2</a></li>
+</body>
+
+<h2>Inhoud van de oplossing</h2>
+<p>De oplossing bestaat uit de volgende bestanden (geef alle bestanden op):</p>
+<ul>
+<li><a href="solutions/ALU_Group35.circ">ALU_Group35.circ</a>: 16-bit ALU.</li>
+<li><a href="solutions/ALU_components.circ">ALU_components.circ</a>: Logisim library met 16-bit CLA die nodig is voor de werking van de ALU.</li>
+</ul>
+
+<h2>Verslag</h2>
+<p>
+	Voor het laatste project moesten we een 16-bit arithmetic logic unit (ALU) maken. Hier voor gebruikten we de 16-bit carry lookahead adder van de vorige opdrachten. De eerste operaties die onze ALU moest kunnen uitvoeren waren vrij simpel te implementeren.
+	<br> </br>
+	<img src="images/alu.png" alt="16-bit ALU" style="width:1234;height:704;">
+</p>
+<p>
+	Voor de 'numeric addition' gebruikten we de 16-bit CLA van project 2. De 'overflow condities van alle operaties' lieten we samenkomen in een 16-bit multiplexor, deze heeft dus dezelfde bit-grootte als de multiplexor die gebruikt word voor het kiezen welke ALU operatie moet worden uitgevoerd. Omdat er maar enkele operaties zijn waar er 'overflow' optreedt besloten we de overige inputs van de mulitplexor aaneen te schakelen met een constante, 0.
+	<br> </br>
+	<img src="images/overflow.png" alt="Multiplexor voor overflow" style="width:171;height:78;">
+</p>
+<p>
+	Ondanks dat we wisten dat we niet gebruik moesten maken van een nieuwe 16-bit CLA voor de 'numeric substraction' om de ALU efficienter te maken hebben we dit toch gedaan. De reden hiervoor was dat we niet goed wisten hoe we de operatie lijnen moesten implementeren zodat wanneer de operator van de ALU code op 'substraction' stond dit er dus ook voor zorgde dat de 'carryIn' op 1 werd gezet en 'input B' werd omgekeerd.
+	<br> </br>
+	<img src="images/substraction.png" alt="numeric substraction" style="width:1157 ;height:841;">
+</p>
+<p>
+	Bij het testen van van de 'numeric addition' en 'numeric substraction' met het script dat werd meegeleverd doken er ook enkele andere problemen op. Zo werd de 'overflow' conditie niet geregistreerd, maar handmatig in Logisim werkte dit wel.
+	<br> </br>
+
+<p>
+	De 'equals' en 'not equals' werden aan de hand van een subcircuit geimplementeerd in de 16-bit ALU. We gebruikten 16 'XOR-gates', hiervan moet er dus slechts een op 1 staan als we willen dat de output ook op 1 staat. Al deze outputs komen in een 'OR-gate', hier hoeft maar een van de outputs op 1 staan zodat de output van deze 'OR-gate' op 1 staat. Deze output komt in een 'NOT-gate'(dit is enkel bij de 'equals' operatie), de output hier van is hier natuurlijk 1 bit groot dus gebruiken we een 'bit extender' om deze om te zetten naar een 16-bit output. Wanneer 2 inputs dus gelijk zijn komt er geen enkele 1 uit de outputs van de 'XOR-gates', dit maakt de 'OR-gate' op 0 te staan, dit signaal wordt dan omgekeerd en we bekomen een juist resultaat. Bij 'not equals' wordt het signaal omgekeerd en bekomen we een fout resultaat.
+	<br> </br>
+	<img src="images/equal.png" alt="'equal operation'" style="width:883;height:661;"> 
+</p>
+<p>
+	We hergebruikten de 16-bit CLA terug voor de 'numeric inverse' operatie. We hebben deze operatie in feite al deels gedaan bij de 'numerieke substractie'. De input A wordt omgekeerd en de 'carryIn' wordt op 1 gezet door de constante, 1, te gebruiken. Als input B gebruikten we een constante van 16 bits. Dit is vermoedelijk niet de goedkoopste en efficiëntste oplossing, maar wel moeiteloos.
+</p>
+<p>
+	Voor de twee 'logical shift' operations werden alle inputs aangesloten aan twee aparte 'AND-gates' behalve de eerste en de laatste, deze werden aan slechts een 'AND-gate' aangesloten. We verkrijgen dus de formule: (2 * n) - 2, met n het aantal inputs. We komen met 16-bits dus op een totaal van 30 'AND-gates'. De overige inputs van de 'AND-gates' sluiten we om te beurt aan met respectievelijk constante 1 en omgekeerde van constante 1. Bij 'shift left logical' staat deze constante op 1, bij 'shift right logical' op 0. De output van de eerste en vierde 'AND-gate' komen samen in een 'OR-gate', dit wordt de tweede output, de output van de derde en zesde 'AND-gate' komen weer samen in een 'OR-gate', deze wordt derde output, ... De output van de tweede en voorlaatste 'AND-gate' worden respectievelijk de eerste en laatste output.
+	<br> </br>
+	<img src="images/logicalLeftShift.png" alt="'logical left shift' operation" style="width:683;height:618;">
+</p>
+	De 'less than' en 'greater than' operaties kregen we niet volledig opgelost, we wisten niet hoe we de 'set' in de 16-bit CLA moesten implementeren om hieruit ons gewenst resultaat uit te krijgen.
+</p>
+<p>
+	De twee 'arithemtic shifts' hebben we zeer primitief opgelost omdat we deels in tijdsnood geraken. Deze wordt via integer division opgelost en wanneer er 'overflow' optreedt bij de 'shift left arithmetic' wordt dit aangeduid met een 1-bit output.
+</p>
+	We maakten gebruik van 'tunnels' om de ALU 'operation code' netjes aan elkaar aan te sluiten met de twee 'multiplexors'. Deze tunnels gedragen zich als draden die niet gezien kunnen worden.
+	<br> </br>
+	<img src="images/tunnel1.png" alt="'tunnel ALU operation code" style="width:146;height:39;">
+	<br> </br>
+	<img src="images/tunnel2.png" alt="'tunnel multiplexor" style="width:215;height:84;">
+
+
+<p>
+	<h3>Enkele 'afterthoughts'</h3>
+	Dit project was zeker het moeilijkst van de drie. Enkele operaties werden niet gesnapt door ons beiden, maar toch vinden we dat het goed gegaan is. Dit project heeft ons inzicht in 'Computerarcitectuur' zeker versterkt.
+</p>
+
+
+
+
+</body></html>
