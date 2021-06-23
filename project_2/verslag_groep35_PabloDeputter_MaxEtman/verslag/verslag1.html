@@ -1,0 +1,86 @@
+<html>
+
+<head>
+<title>Verslag</title>
+<!-- Het "u" element (underline) is geherdefinieerd voor overline -->
+<style type="text/css">u {text-decoration: overline;}</style>
+
+</head>
+
+<body style="background-color:LightGray;"></body>
+
+<h1>Verslag</h1>
+<p><b>Titel:</b> <i>Verslag 1</i></p>
+<p>Dit verslag werd opgesteld door:<br />
+<ul>
+<li><b>Naam:</b> <i>Deputter Pablo</i><br />
+<b>Studentennummer:</b> <i>20205440</i><br />
+<b>Email adres:</b> <i>Pablo.Deputter@student.uantwerpen.be</i>
+</li>
+<li><b>Naam:</b> <i>Etman Max<br />
+<b>Studentennummer:</b> <i>20204398</i><br />
+<b>Email adres:</b> <i>Max.Etman@student.uantwerpen.be</i>
+</li>
+</ul>
+<b>Aantal man-uren besteed:</b> <i>6 uur</i><br />
+<b>Moeilijkheidsgraad:</b> <i>3</i> /10</p>
+
+<h2>Inhoud van de oplossing</h2>
+<p>De oplossing bestaat uit de volgende bestanden (geef alle bestanden op):</p>
+<ul>
+<li><a href="../images/16_bit_register.png">16_bit_register.png</a>: 16-bit Register</li>
+<li><a href="../images/register_file.png">register_file.png</a>: Register File</li>
+<li><a href="../images/counter.png">counter.png</a>: Counter</li>
+<li><a href="../images/trafficLight_counter.png">trafficLight_counter.png</a>: Counter for Traffic Light</li>
+<li><a href="../images/trafficLight.png">trafficLight.png</a>: Traffic Light</li>
+<li><a href="../images/stack.png">stack.png</a>: Stack</li>
+
+<li><a href="../solutions/project1.circ">project1.circ</a>: Logisim bestand met alle oplossingen</li>
+<li><a href="../solutions/CLA.circ">CLA.circ</a>: Logisim CLA bestand</li>
+</ul>
+
+<h3>Verschillende links:</h3>
+<li><a href="verslag1.html">Verslag 1</a></li>
+<li><a href="verslag2.html">Verslag 2</a></li>
+<li><a href="home.html">Home</a></li>
+
+<h2>Verslag</h2>
+<p>
+    <h3>16-bit Register</h3>
+    Deze opdracht was gemakkelijk op te lossen door 16 D flip-flops met een falling edge-triggered functie te verbinden met elke input bit en output bit a.d.h.v. splitters en daarna de clock, reset en write input aan elke D flip-flop te verbinden. 
+    Hieronder een afbeelding van de 16-bit register.
+    <br><br>
+    <img src="../images/16_bit_register.png" alt="16_bit_register" style="width:635;height:761px;">
+    <br><br>
+    <h3>Register File</h3>
+    We konden de register file maken op dezelfde wijze als de 16-bit Register. Nu werden alleen de 16 D flip-flops te verwisselen met 16-bit Registers en deze konden we via multiplexors aan elkaar toevoegen zodat de gebruiker via rt en rs kon kiezen de inhoud van een register te bekijken. Met de rd input kan men kiezen in welke register de DATA terecht komt. Hieronder weer een screenshot van de Register File
+    <br><br>
+    <img src="../images/register_file.png" alt="register_file" style="width:685;height:424;">
+    <br><br>
+    <h3>Counter</h3>
+    Onderstaande afbeelding laat zien hoe wij de derde opdracht hebben opgelost. Voor deze opdracht was het gewoonweg even wat sleutelen met de CLA-ADDER om ervoor te zorgen dat deze kon tellen, uiteindelijk kwamen we tot het
+    besluit dat we gewoonweg een register als een tijdelijk geheugen konden gebruiken om als output terug te geven en om te vergelijken met de input. Dan gebruikten we een ingebouwede comparator van Logisim om de vergelijking met dit
+    register en de input mogelijk te maken.
+    <br><br>
+    <img src="../images/counter.png" alt="counter" style="width:591;height:281;">
+    <br><br>
+    <h3>Traffic Light</h3>
+    Voor deze opdracht hebben we de counter aangepast zodat er geen input enable was.
+    <br><br>
+    <img src="../images/trafficLight_counter.png" alt="counter_trafficLight" style="width:559;height:261;">
+    <br><br>
+    Hierna lieten we de counter 28s lopen nadat deze ge-reset werd. In het ROM geheugen staan de waarden die nodig zijn om de verschillende LED lampjes te laten branden. Deze LED lampjes moeten een verkeerslicht voorstellen. De waarden in het ROM zorgen er voor dat de juiste LED lampjes gaan branden en wanneer de counter ge-reset wordt zal deze dus terug naar de eerste waarde in het ROM geheugen wijzen. Hieronder een afbeelding van het verkeerslicht.
+    <br><br>
+    <img src="../images/trafficLight.png" alt="trafficLight" style="width:803;height:383;">
+    <br><br>
+    <h3>Stack</h3>
+    Hieronder een afbeelding van onze Stack.
+    <br><br>
+    <img src="../images/stack.png" alt="stack" style="width:812;height:544;">
+    <br><br>
+    De stack werkt hoe een ADT stack zou moeten werken met PUSH en POP operaties. Wanneer de gebruiker een POP operatie op een lege stack wil doen zal de ERROR output op 1 gezet worden. Wanneer er geen operatie gedaan wordt zal de stackpointer naar het bovenste element wijzen.
+</p>
+
+</body>
+
+</html>

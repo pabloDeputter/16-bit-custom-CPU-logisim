@@ -1,0 +1,127 @@
+<html>
+
+<head>
+<title>Verslag</title>
+<!-- Het "u" element (underline) is geherdefinieerd voor overline -->
+<style type="text/css">u {text-decoration: overline;}</style>
+
+</head>
+
+<body style="background-color:LightGray;"></body>
+
+<h1>Verslag</h1>
+<p><b>Titel:</b> <i>Verslag 2</i></p>
+<p>Dit verslag werd opgesteld door:<br />
+<ul>
+<li><b>Naam:</b> <i>Deputter Pablo</i><br />
+<b>Studentennummer:</b> <i>20205440</i><br />
+<b>Email adres:</b> <i>Pablo.Deputter@student.uantwerpen.be</i>
+</li>
+<li><b>Naam:</b> <i>Etman Max<br />
+<b>Studentennummer:</b> <i>20204398</i><br />
+<b>Email adres:</b> <i>Max.Etman@student.uantwerpen.be</i>
+</li>
+</ul>
+<b>Aantal man-uren besteed:</b> <i>15 uur</i><br />
+<b>Moeilijkheidsgraad:</b> <i>9</i> /10</p>
+
+<h2>Inhoud van de oplossing</h2>
+<p>De oplossing bestaat uit de volgende bestanden (de volgende oplossingen maken gebruik van de vorige bestanden):</p>
+<ul>
+<li><a href="../images/programCounter.png">programCounter.png</a>: Program Counter</li>
+<li><a href="../images/alu.png">alu.png</a>: ALU</li>
+<li><a href="../images/registerFileDataPath.png">registerFileDataPath.png</a>: Register File</li>
+<li><a href="../images/controlUnitOutputs.png">controlUnitOutputs.png</a>: Outputs Control Unit</li>
+<li><a href="../images/controlUnitTable.png">controlUnitTable.png</a>: Outputs Control Table</li>
+<li><a href="../images/controlUnitOutputLW.png">controlUnitOutputLW.png</a>: Outputs Control LW</li>
+<li><a href="../images/controlUnitOutputSW.png">controlUnitOutputSW.png</a>: Outputs Control SW</li>
+<li><a href="../images/controlUnit.png">controlUnit.png</a>: Control Unit</li>
+<li><a href="../images/dataPathProgramCounter.png">dataPathProgramCounter.png</a>: DataPath Program Counter</li>
+<li><a href="../images/dataPathControlUnit.png">dataPathControlUnit.png</a>: DataPath Control Unit</li>
+<li><a href="../images/dataPathALU.png">dataPathALU.png</a>: DataPath ALU</li>
+<li><a href="../images/dataPath.png">dataPath.png</a>: DataPath</li>
+<li><a href="../solutions/SD_Group35.circ">SD_Group35.circ</a>: Logisim DataPath bestand</li>
+<li><a href="../solutions/ALU.circ">ALU.circ</a>: Logisim ALU bestand</li>
+<li><a href="../solutions/project1.circ">project1.circ</a>: Logisim Project 1 bestand</li>
+<li><a href="../solutions/CLA.circ">CLA.circ</a>: Logisim CLA bestand</li>
+
+</ul>
+
+<h3>Verschillende links:</h3>
+<li><a href="verslag1.html">Verslag 1</a></li>
+<li><a href="verslag2.html">Verslag 2</a></li>
+<li><a href="home.html">Home</a></li>
+
+<h2>Verslag</h2>
+<p>
+    <h3>Program counter</h3>
+    Voor de eerste opdracht werd er ons gevraagd een Program Counter te construeren voor het Datapath sinds dit hier een essentieel onderdeel hier van is. We hebben ons voor een groot deel gebasseerd op de counter van de vorige opdrachten, maar hebben enkele
+    outputs en inputs toegevoegd voor latere, volledige Datapath. We hebben onze 16-bit register gebruikt en hier enkele klokcyclus de waarde één aan toegevoegd. Zie onderstaande afbeelding van onze Program Counter voor meer details.
+    <br><br>
+    <img src="../images/programCounter.png" alt="ProgramCounter" style="width:940;height:318;">
+    <br><br>
+    <h3>DataPath</h3>
+    De tweede opdracht van dit project en ook de grootste was het "kleine" Datapath. Voordat we hieraan begonnen wist ik niet goed
+    wat ik allemaal moest doen, maar nu snap ik het voor een groot deel.
+    <br><br>
+    <h3>ALU</h3>
+    Voordat we aan het Datapath konden begonnen moesten we onze ALU bijwerken want deze werkte niet volledig. We gebruikten de ingebouwde libraries van Logisim om alles te vervangen zodat onze ALU optimaal werkte. Zie hier onder voor een screenshot van onze bijgewerkte ALU.
+    <br><br>
+    <img src="../images/alu.png" alt="ALU" style="width:927;height:574;">
+    <br><br>
+    <h3>Register File</h3>
+    Voor het debuggen was het noodzakelijk om voor elke register een 16-bit output te voorzien. We gebruikten terug de 16-bit register en basseerden ons op de reeds gemaakte Register File van de vorige opdracht. Deze register heeft een DATA input om de kiezen welke waarde er wordt geschreven in register rd. En heeft ook twee outputs die de waarden van register rt en rs respectievelijk tonen. Met de WRITE input kan er gekiezen worden of der in de registers gescheven kan worden en met de RESET input worden alle 16 registers ge-reset.
+    <br><br>
+    <img src="../images/registerFileDataPath.png" alt="RegisterFileDataPath" style="width:1007;height:676;">
+    <br><br>
+    <h3>Control Unit</h3>
+    Ik besloot een aparte Control Unit te maken die de eerste 4 bits (rt code) en laatste 4 bits (OP code) als input kreeg. Dit vond ik veel makkelijker en was ook veel overzichtelijker in het uiteindelijke Datapath. Aan de hand van de tabel werd de Control Unit zo gemaakt dat wanneer de OP code op 0000 de instructie ZERO wordt waargenomen, hierna wordt er gekeken naar de rt code. Als deze ook 0000 is hebben we een ZERO instructie en is de ALU code output van de Control Unit
+    gelijk aan 0000. Wanneer we te maken hebben van een Unary Operation staat de OP code op 0001 en wordt er gekeken naar de rt code en wordt de juiste ALU code naar de output gestuurd. Bij de andere operaties wordt er enkel gekeken naar de OP code en wordt de weer de juiste ALU code naar de output gestuurd. Wanneer we niet te maken hebben met een LW of SW zijn de andere outputs niet van belang. Hieronder kan je alle outputs bij een standaard operatie van de Control Unit zien en de tabel waar we gebruik van gemaakt hebben.
+    <br><br>
+    <img src="../images/controlUnitOutputs.png" alt="RegisterFileDataPath" style="width:81;height:173;">
+    <br><br>
+    <img src="../images/controlUnitTable.png" alt="ControlUnitTable" style="width:620;height:313;">
+    <br><br>
+    <br><br>
+    Wanneer we wel te maken hebben met een SW of LW kijken we naar de rt code en OP code gebeurt er iets heel anders in de Control Unit.
+    <br>
+    Bij een LW / 1010, staan de output MemToReg, MemRead, ALUSrc en RegWrite op één. De functies zijn respectievelijk: zorgt er voor dat de output van de RAM naar de DATA input van de register file wordt gestuurd, zorgt er voor dat de LOAD functie van de RAM op 1 staat en de waarde in de RAM wordt dus naar de output van de RAM gestuurd, de tweede input van de ALU is gelijk aan de rt code bit extended naar 16-bits als deze op 1 staat en RegWrite zorgt er voor dat er in de registers van de register file kan geschreven worden. De rt code is de offset-waarde die in de ALU gaat. MemWrite en RegDst hebben geen doel bij een LW. Bij zowel een LW en SW operatie staat de ALU code standaard op ADD / 0100.
+    <br><br>
+    <img src="../images/controlUnitOutputLW.png" alt="controlUnitOutputLW" style="width:229;height:273;">
+    <br><br>
+    Bij een SW / 1011, staan de output MemWrite, ALUSrc, RegDst op één. De functies zijn respectievelijk: zogt er voor dat de STORE functie van de RAM op 1 staat en er kunnen dus nieuwe waarden in het RAM geheugen geschreven worden, ALUSrc zorgt er voor de tweede input van de ALU is gelijk aan de rt code bit extended naar 16-bits als deze op 1 staat en wanneer RegDst op 1 staat zal de rt waarde gelijk zijn aan de rd waarde en deze wordt dus naar geschreven in het RAM geheugen. De rt code is weer de offset-waarde die naar de ALU gaat. MemToReg, MemRead en RegWrite hebben geen belang bij een SW. Weer is de ALU code op ADD / 0100 gezet. 
+    <br><br>
+    <img src="../images/controlUnitOutputSW.png" alt="controlUnitOutputSW" style="width:240;height:270;">
+    <br><br>
+    Hieronder een afbeelding van de volledige Control Untit.
+    <br><br>
+    <img src="../images/controlUnit.png" alt="controlUnit" style="width:1038;height:422;">
+    <br><br>
+    <h3>DataPath</h3>
+    Nu moesten we enkel nog alle componenten in ons main circuit met elkaar verbinden. Eerst werd de Program Counter met de clock en reset verbonden. De BRANCH outputs lieten we op 0 want deze moesten we nog niet gebruiken.
+    <br><br>
+    <img src="../images/dataPathProgramCounter.png" alt="dataPathProgramCounter" style="width:253;height:456;">
+    <br><br>
+    Hierna werd de output van de Program Counter met onze Instrucion Memory verbonden. De rt code en OP code hiervan gaan naar de Contol Unit, de rest gaat naar het Register File.
+    <br><br>
+    <img src="../images/dataPathControlUnit.png" alt="dataPathControlUnit" style="width:584;height:468;">
+    <br><br>
+    Ten laatste worden alle draden met de juiste multiplexors, ALU inputs, RAM inputs, ... verbonden.
+    <br><br>
+    <img src="../images/dataPathALU.png" alt="dataPathALU" style="width:720;height:419;">
+    <br><br>
+    Hieronder is een afbeelding van het volledige DataPath.
+    <br><br>
+    <img src="../images/dataPath.png" alt="dataPath" style="width:836;height:466;">
+    <br><br>
+    <h3>Testen</h3>
+    Ons DataPath voltooide alle testen die in de opdracht werd meegegeven. We hebben geprobeerd zelf testen te maken, maar kregen steeds deze error.
+    <br><br>
+    <img src="../images/error.png" alt="error" style="width:484;height:20;">
+    <br><br>
+
+</p>
+
+</body>
+
+</html>

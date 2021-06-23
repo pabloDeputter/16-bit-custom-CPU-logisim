@@ -1,0 +1,14 @@
+LOADMEM
+zero r0
+lw r1 r0 5
+lw r2 r0 6
+add r3 r1 r2
+DATAMEM # 4
+10 # 5
+-1 # 6
+CHECKMEM
+r1: 10
+r2: -1
+r3: 9
+pc: 4
+END
