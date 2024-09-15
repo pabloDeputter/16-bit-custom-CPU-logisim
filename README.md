@@ -5,6 +5,7 @@ This repository contains the design and implementation of a 16-bit CPU in Logisi
 
 Each project stage includes its own set of exercises, test cases, notes, and reports. The reports are provided in HTML format and offer insights into the thought process, design decisions, and simulations for each phase of development.
 
+**Created for the "Computer Systems & Architecture" 1st bachelor course at the University of Antwerp.**
 
 ---
 
